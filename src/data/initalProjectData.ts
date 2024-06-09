@@ -1,6 +1,8 @@
 import { IProjectStore } from '@store/type';
 
 export const initalProjects: IProjectStore = {
+  activeView: 'kanban',
+  activeProjectID: '',
   projects: [
     {
       id: '5eb8e255-ac5c-436c-8bab-7a35e8b55644',
@@ -53,6 +55,7 @@ export const initalProjects: IProjectStore = {
           color: '#3686FF',
         },
       ],
+      status: 'active',
     },
   ],
   tasks: [

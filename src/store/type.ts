@@ -5,6 +5,8 @@ export type SingleStageEntity = {
   expanded: boolean;
 };
 
+export type ProjectStatus = 'active' | 'closed';
+
 export type ProjectEntityType = {
   id: string;
   name: string;
@@ -12,6 +14,7 @@ export type ProjectEntityType = {
   icon?: File;
   stages: SingleStageEntity[];
   tags: SingleTagEntity[];
+  status: ProjectStatus;
 };
 
 export type SingleTagEntity = {
@@ -34,7 +37,11 @@ export type SingleTaskEntity = {
   };
 };
 
+export type ActiveView = 'project' | 'kanban' | 'list';
+
 export interface IProjectStore {
   projects: ProjectEntityType[];
   tasks: SingleTaskEntity[];
+  activeView: ActiveView;
+  activeProjectID: string;
 }

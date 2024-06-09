@@ -5,6 +5,12 @@ export const projectSlice = createSlice({
   name: 'projects',
   initialState: initalProjects,
   reducers: {
+    setActiveProject: (
+      state,
+      { payload }: PayloadAction<{ projectID: string }>
+    ) => {
+      state.activeProjectID = payload.projectID;
+    },
     deleteProject: (
       state,
       { payload }: PayloadAction<{ projectID: string }>
@@ -18,7 +24,7 @@ export const projectSlice = createSlice({
   },
 });
 
-export const { deleteProject } = projectSlice.actions;
+export const { deleteProject, setActiveProject } = projectSlice.actions;
 
 const projectReducers = projectSlice.reducer;
 export default projectReducers;
