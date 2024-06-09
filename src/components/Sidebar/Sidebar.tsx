@@ -64,10 +64,11 @@ export const Sidebar = () => {
   }
 
   return (
-    <div className="h-full w-[350px] px-5 py-8 border-r border-primary shadow-xl shadow-slate-300">
-      <h1 className="text-3xl font-semibold text-black">All Projects</h1>
+    <div className="h-full w-[320px] shrink-0 basis-[320px] px-5 py-8 border-r border-primary shadow-xl shadow-slate-300">
+      <h1 className="text-4xl font-bold mb-10">Task Hub</h1>
+      <h1 className="text-xl font-semibold text-black">All Projects</h1>
 
-      <div className="flex items-center space-x-2 border rounded-full bg-lightPink h-11 px-3 my-6">
+      <div className="flex items-center space-x-2 border rounded-full bg-lightPink h-11 px-3 mb-6 mt-4">
         <MagnifyingGlass size={20} />
         <input type="text" value={search} onChange={handleSearch} placeholder="Search Project" className="bg-transparent border-none focus:outline-none text-sm text-darkGray font-normal" />
       </div>
@@ -86,7 +87,7 @@ export const Sidebar = () => {
           currentTabProjects.length ?
             currentTabProjects.map((project) =>
               <div key={project.name} onClick={() => handleActiveProject(project.id)} className={`flex justify-start items-center space-x-3 h-12 w-full py-4 px-3 rounded-full shadow-sm ${activeProjectID === project.id ? 'bg-pink/[0.24]' : ''}`}>
-                <div className="w-8 h-8 rounded-full shadow-xl bg-light-blue flex justify-center items-center">
+                <div className="w-8 h-8 rounded-full shadow-xl bg-lightBlue flex justify-center items-center">
                   {
                     project.icon ?
                       <img src={createAttachmentImgSrc(project.icon)} className="w-5 h-5" />

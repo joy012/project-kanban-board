@@ -7,7 +7,7 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="h-screen w-screen flex items-center">
       <Sidebar />
-      <div className="h-screen">
+      <div className="h-screen w-full">
         <Header />
         {children}
       </div>

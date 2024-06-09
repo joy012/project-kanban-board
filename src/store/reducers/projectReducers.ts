@@ -1,5 +1,6 @@
 import { initalProjects } from '@data/initalProjectData';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { ActiveView } from '@store/type';
 
 export const projectSlice = createSlice({
   name: 'projects',
@@ -10,6 +11,12 @@ export const projectSlice = createSlice({
       { payload }: PayloadAction<{ projectID: string }>
     ) => {
       state.activeProjectID = payload.projectID;
+    },
+    setActiveView: (
+      state,
+      { payload }: PayloadAction<{ view: ActiveView }>
+    ) => {
+      state.activeView = payload.view;
     },
     deleteProject: (
       state,
@@ -24,7 +31,8 @@ export const projectSlice = createSlice({
   },
 });
 
-export const { deleteProject, setActiveProject } = projectSlice.actions;
+export const { deleteProject, setActiveProject, setActiveView } =
+  projectSlice.actions;
 
 const projectReducers = projectSlice.reducer;
 export default projectReducers;

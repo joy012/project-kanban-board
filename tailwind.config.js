@@ -10,6 +10,7 @@ export default {
         black: '#111111',
         darkGray: '#333333',
         mediumGray: '#5A5A5A',
+        primaryBlue: '#690DFF',
       },
       backgroundColor: {
         black: '#000000',
@@ -26,7 +27,8 @@ export default {
         orange: '#FF5C00',
       },
       borderColor: {
-        primary: '#EBECF2'
+        primary: '#EBECF2',
+        primaryBlue: '#690DFF',
       },
       boxShadowColor: {
         primary: '#EBECF2',
