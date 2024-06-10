@@ -6,7 +6,7 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="h-screen w-screen flex items-center">
       <Sidebar />
-      <div className="h-screen w-full">
+      <div className="max-h-screen overflow-y-hidden w-full">
         <Header />
         {children}
       </div>

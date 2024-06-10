@@ -11,7 +11,7 @@ export type ProjectEntityType = {
   id: string;
   name: string;
   description: string;
-  icon?: File;
+  icon?: string;
   stages: SingleStageEntity[];
   tags: SingleTagEntity[];
   status: ProjectStatus;
@@ -23,18 +23,28 @@ export type SingleTagEntity = {
   color: string;
 };
 
+export type SingleAttachmentEntity = {
+  id: string;
+  name: string;
+  url: string;
+  mimeType: string;
+  createdAt?: string;
+};
+
+export type DateEnity = {
+  start: string;
+  end: string;
+};
+
 export type SingleTaskEntity = {
   id: string;
   title: string;
   description: string;
-  attachments: File[];
+  attachments: SingleAttachmentEntity[];
   stageID: string;
   projectID: string;
   tags: string[]; // this should be an array of tag ids
-  dueDate: {
-    start: string;
-    end: string;
-  };
+  dueDate: DateEnity;
 };
 
 export type ActiveView = "project" | "kanban" | "list";

@@ -1,8 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { setActiveProject } from "@store/reducers/projectReducers";
 import { ProjectStatus } from "@store/type";
-import { createAttachmentImgSrc } from "@utils/utils";
-import { CaretRight, Kanban, MagnifyingGlass } from "phosphor-react";
+import { ChartBar, DotsThreeVertical, MagnifyingGlass } from "phosphor-react";
 import { useEffect, useMemo, useState } from "react";
 
 export const Sidebar = () => {
@@ -96,7 +95,7 @@ export const Sidebar = () => {
           <div
             key={index}
             onClick={() => handleTab(tab.status)}
-            className={`min-w-24 h-8 ${currentTab === tab.status ? "bg-black text-white" : "bg-lightPink text-darkGray"} border border-primary rounded-full  text-sm flex justify-center items-center cursor-pointer`}
+            className={`min-w-24 h-8 transition duration-500 ease-in-out ${currentTab === tab.status ? "bg-black text-white" : "bg-lightPink text-darkGray"} border border-primary rounded-full  text-sm flex justify-center items-center cursor-pointer `}
           >
             {tab.name} ({tab.count})
           </div>
@@ -109,22 +108,23 @@ export const Sidebar = () => {
             <div
               key={project.name}
               onClick={() => handleActiveProject(project.id)}
-              className={`flex justify-start items-center space-x-3 h-12 w-full py-4 px-3 rounded-full shadow-sm ${activeProjectID === project.id ? "bg-pink/[0.24]" : ""}`}
+              className={`group flex justify-start items-center space-x-3 h-12 w-full py-4 px-3 rounded-full cursor-pointer ${activeProjectID === project.id ? "bg-pink/[0.24] shadow-sm " : ""} hover:bg-pink/[0.24] transition duration-300 ease-in-out`}
             >
-              <div className="w-8 h-8 rounded-full shadow-xl bg-lightBlue flex justify-center items-center">
+              <div className="w-8 h-8 rounded-full shadow-xl bg-lightBlue flex justify-center items-center shrink-0">
                 {project.icon ? (
-                  <img
-                    src={createAttachmentImgSrc(project.icon)}
-                    className="w-5 h-5"
-                  />
+                  <img src={project.icon} className="w-5 h-5" />
                 ) : (
-                  <Kanban size={20} weight="duotone" />
+                  <ChartBar size={20} weight="duotone" />
                 )}
               </div>
               <h3 className="text-sm font-medium text-black truncate">
                 {project.name}
               </h3>
-              <CaretRight size={18} weight="bold" />
+              <DotsThreeVertical
+                size={24}
+                weight="bold"
+                className="invisible group-hover:visible"
+              />
             </div>
           ))
         ) : (

@@ -3,10 +3,27 @@ import { useGetActiveProject } from "@hooks/useGetActiveProject";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { setActiveView } from "@store/reducers/projectReducers";
 import { ActiveView } from "@store/type";
-import { createAttachmentImgSrc } from "@utils/utils";
-import { DotsThreeOutlineVertical, Kanban } from "phosphor-react";
+import {
+  ChartBar,
+  DotsThreeOutlineVertical,
+  Kanban,
+  Rows,
+} from "phosphor-react";
 
-const projectViews: ActiveView[] = ["project", "kanban", "list"];
+const projectViews = [
+  {
+    view: "project",
+    icon: <ChartBar size={20} weight="duotone" className="mr-1" />,
+  },
+  {
+    view: "kanban",
+    icon: <Kanban size={20} weight="duotone" className="mr-1" />,
+  },
+  {
+    view: "list",
+    icon: <Rows size={20} weight="duotone" className="mr-1" />,
+  },
+];
 
 export const Header = () => {
   const dispatch = useAppDispatch();
@@ -22,17 +39,14 @@ export const Header = () => {
   };
 
   return (
-    <div className="h-36 w-full px-7 pt-7 border-b border-primary shadow-md relative">
+    <div className="h-36 w-full px-7 pt-5 border-b border-primary shadow-sm relative">
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12 rounded-full shadow-xl bg-lightBlue flex justify-center items-center">
             {activeProject.icon ? (
-              <img
-                src={createAttachmentImgSrc(activeProject.icon)}
-                className="w-5 h-5"
-              />
+              <img src={activeProject.icon} className="w-5 h-5" />
             ) : (
-              <Kanban size={24} weight="duotone" />
+              <ChartBar size={24} weight="duotone" />
             )}
           </div>
           <h2 className="text-2xl text-black font-semibold">
@@ -44,13 +58,14 @@ export const Header = () => {
       </div>
 
       <div className="flex justify-start items-end space-x-5 min-w-max absolute bottom-[-2px]">
-        {projectViews.map((view, index) => (
+        {projectViews.map((item, index) => (
           <div
             key={index}
-            onClick={() => handleActiveView(view)}
-            className={`cursor-pointer capitalize h-12 w-16 border-b-2  flex items-center justify-center text-sm ${activeView === view ? "text-primaryBlue border-primaryBlue font-semibold" : "text-darkGray font-medium border-0"}`}
+            onClick={() => handleActiveView(item.view)}
+            className={`cursor-pointer capitalize h-12 min-w-max px-3 flex items-center justify-center text-sm transition duration-500 ease-in-out ${activeView === item.view ? "text-primaryBlue border-b-2 border-primaryBlue font-semibold" : "text-darkGray font-medium border-0"}`}
           >
-            {view}
+            {item.icon}
+            {item.view}
           </div>
         ))}
       </div>
