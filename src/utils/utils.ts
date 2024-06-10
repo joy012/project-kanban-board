@@ -1,7 +1,7 @@
-import { ColorMap } from '@CONSTANT/ColorMap';
+import { ColorMap } from "@CONSTANT/ColorMap";
 
 export const getColor = (initial: string) => {
-  if (!initial) return ColorMap['A'];
+  if (!initial) return ColorMap["A"];
   return ColorMap[initial.toUpperCase()];
 };
 

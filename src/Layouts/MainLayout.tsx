@@ -1,7 +1,6 @@
-import { Header } from "@components/Header/Header"
-import { Sidebar } from "@components/Sidebar/Sidebar"
-import { FC, PropsWithChildren } from "react"
-
+import { Header } from "@components/Header/Header";
+import { Sidebar } from "@components/Sidebar/Sidebar";
+import { FC, PropsWithChildren } from "react";
 
 export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -12,5 +11,5 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
         {children}
       </div>
     </div>
-  )
-}
+  );
+};

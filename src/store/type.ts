@@ -5,7 +5,7 @@ export type SingleStageEntity = {
   expanded: boolean;
 };
 
-export type ProjectStatus = 'active' | 'closed';
+export type ProjectStatus = "active" | "closed";
 
 export type ProjectEntityType = {
   id: string;
@@ -37,7 +37,7 @@ export type SingleTaskEntity = {
   };
 };
 
-export type ActiveView = 'project' | 'kanban' | 'list';
+export type ActiveView = "project" | "kanban" | "list";
 
 export interface IProjectStore {
   projects: ProjectEntityType[];
